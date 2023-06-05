@@ -47,6 +47,9 @@
 				<text class="lineTwo"></text>
 				</view>
 		</view>
+		<view class="maxBox" v-if="current===1">
+			<img src="../../static/previewFix (1).jpg" alt="" style="margin-left: 100rpx;width: 500rpx;height: 500rpx;">
+		</view>
 	</view>
 </template>
 <script>

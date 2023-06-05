@@ -9568,16 +9568,134 @@ function normalizeComponent (
 /* 36 */,
 /* 37 */,
 /* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
+/* 39 */
+/*!**********************************!*\
+  !*** D:/桌面/demo/demo/common .js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//获取当前时间，格式YYYY-MM-DD HH:MM:SS
+var GetNowTime = function GetNowTime(time) {
+  var date = time,
+    year = date.getFullYear(),
+    month = date.getMonth() + 1,
+    day = date.getDate(),
+    hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
+    minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
+    second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+  month >= 1 && month <= 9 ? month = "0" + month : "";
+  day >= 0 && day <= 9 ? day = "0" + day : "";
+  // var timer = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+  var timer = year + '-' + month + '-' + day;
+  return timer;
+};
+
+// 格式化电话号码
+var GetPhone = function GetPhone(phone) {
+  var tel = phone.slice(0, 3) + '****' + phone.slice(7, 11);
+  return tel;
+};
+//返回日期和周几数组
+function weekDate() {
+  var myDate = new Date();
+  myDate.toLocaleDateString();
+  var month = myDate.getMonth() + 1;
+  var time = myDate.getFullYear() + '年' + month + '月' + myDate.getDate() + '日';
+  var total = 1; // 个数
+  var dayList = [];
+  dayList.push({
+    'day': myDate.getDate(),
+    'month': myDate.getMonth() + total,
+    'week': toWeekDay(myDate.getDay()),
+    'year': myDate.getFullYear()
+  });
+  for (var i = 0; i < 10; i++) {
+    myDate.setDate(myDate.getDate() + total); // number 是最近几天  则会自动计算
+    // 需求  月份-日   星期几      
+    dayList.push({
+      'day': myDate.getDate(),
+      'month': myDate.getMonth() + total,
+      'week': toWeekDay(myDate.getDay()),
+      'year': myDate.getFullYear()
+    });
+  }
+  // return dayList;
+  var length = dayList.length;
+  var arrOne = dayList[0];
+  var arrLast = dayList[length - 1];
+  var StartDate = arrOne.year.toString() + '-' + arrOne.month + '-' + arrOne.day;
+  var EndDate = arrLast.year.toString() + '-' + arrLast.month + '-' + arrLast.day;
+  return {
+    dayList: dayList,
+    StartDate: StartDate,
+    EndDate: EndDate
+  };
+}
+function toWeekDay(weekDay) {
+  // 传入数据  讲一周的某一天返回成中文状态下的字符
+  switch (weekDay) {
+    case 1:
+      return '一';
+      break;
+    case 2:
+      return '二';
+      break;
+    case 3:
+      return '三';
+      break;
+    case 4:
+      return '四';
+      break;
+    case 5:
+      return '五';
+      break;
+    case 6:
+      return '六';
+      break;
+    case 0:
+      return '日';
+      break;
+    default:
+      break;
+  }
+  return '传入未知参数';
+}
+module.exports = {
+  GetNowTime: GetNowTime,
+  GetPhone: GetPhone,
+  weekDate: weekDate
+};
+
+/***/ }),
+/* 40 */
+/*!*********************************************!*\
+  !*** D:/桌面/demo/demo/static/previewFix.jpg ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/previewFix.jpg";
+
+/***/ }),
+/* 41 */
+/*!*************************************************!*\
+  !*** D:/桌面/demo/demo/static/previewFix (1).jpg ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/previewFix (1).jpg";
+
+/***/ }),
 /* 42 */,
 /* 43 */,
 /* 44 */,
 /* 45 */,
 /* 46 */,
 /* 47 */,
-/* 48 */
+/* 48 */,
+/* 49 */
 /*!***************************************************************************!*\
   !*** D:/桌面/demo/demo/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \***************************************************************************/
@@ -10596,129 +10714,6 @@ var _default = {
   }]
 };
 exports.default = _default;
-
-/***/ }),
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
-/*!**********************************!*\
-  !*** D:/桌面/demo/demo/common .js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-//获取当前时间，格式YYYY-MM-DD HH:MM:SS
-var GetNowTime = function GetNowTime(time) {
-  var date = time,
-    year = date.getFullYear(),
-    month = date.getMonth() + 1,
-    day = date.getDate(),
-    hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours(),
-    minute = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes(),
-    second = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
-  month >= 1 && month <= 9 ? month = "0" + month : "";
-  day >= 0 && day <= 9 ? day = "0" + day : "";
-  // var timer = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
-  var timer = year + '-' + month + '-' + day;
-  return timer;
-};
-
-// 格式化电话号码
-var GetPhone = function GetPhone(phone) {
-  var tel = phone.slice(0, 3) + '****' + phone.slice(7, 11);
-  return tel;
-};
-//返回日期和周几数组
-function weekDate() {
-  var myDate = new Date();
-  myDate.toLocaleDateString();
-  var month = myDate.getMonth() + 1;
-  var time = myDate.getFullYear() + '年' + month + '月' + myDate.getDate() + '日';
-  var total = 1; // 个数
-  var dayList = [];
-  dayList.push({
-    'day': myDate.getDate(),
-    'month': myDate.getMonth() + total,
-    'week': toWeekDay(myDate.getDay()),
-    'year': myDate.getFullYear()
-  });
-  for (var i = 0; i < 10; i++) {
-    myDate.setDate(myDate.getDate() + total); // number 是最近几天  则会自动计算
-    // 需求  月份-日   星期几      
-    dayList.push({
-      'day': myDate.getDate(),
-      'month': myDate.getMonth() + total,
-      'week': toWeekDay(myDate.getDay()),
-      'year': myDate.getFullYear()
-    });
-  }
-  // return dayList;
-  var length = dayList.length;
-  var arrOne = dayList[0];
-  var arrLast = dayList[length - 1];
-  var StartDate = arrOne.year.toString() + '-' + arrOne.month + '-' + arrOne.day;
-  var EndDate = arrLast.year.toString() + '-' + arrLast.month + '-' + arrLast.day;
-  return {
-    dayList: dayList,
-    StartDate: StartDate,
-    EndDate: EndDate
-  };
-}
-function toWeekDay(weekDay) {
-  // 传入数据  讲一周的某一天返回成中文状态下的字符
-  switch (weekDay) {
-    case 1:
-      return '一';
-      break;
-    case 2:
-      return '二';
-      break;
-    case 3:
-      return '三';
-      break;
-    case 4:
-      return '四';
-      break;
-    case 5:
-      return '五';
-      break;
-    case 6:
-      return '六';
-      break;
-    case 0:
-      return '日';
-      break;
-    default:
-      break;
-  }
-  return '传入未知参数';
-}
-module.exports = {
-  GetNowTime: GetNowTime,
-  GetPhone: GetPhone,
-  weekDate: weekDate
-};
-
-/***/ }),
-/* 53 */
-/*!*********************************************!*\
-  !*** D:/桌面/demo/demo/static/previewFix.jpg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/previewFix.jpg";
-
-/***/ }),
-/* 54 */
-/*!*************************************************!*\
-  !*** D:/桌面/demo/demo/static/previewFix (1).jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/previewFix (1).jpg";
 
 /***/ })
 ]]);
